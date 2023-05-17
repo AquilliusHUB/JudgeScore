@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<body>
+
+<h1>Aquillius Pitch Competition</h1>
+
+<form id="form" onsubmit="validateForm(event)">
+  <label for="Company Name"><b>Company Name: </label>
+  <input type="text" id="cname" name="Company Name"><br><br>
+  <label for="Judge Name">Judge Name: </label>
+  <input type="text" id="jname" name="Judge Name"><br><br>
+  Scoring Guide: 1-Poor 5-Average 10-Excellent</b>
+  <br><br>
+  
+  <fieldset>
+  <legend><b>Market Opportunity [20%]</b></legend>
+  <p>Clear problem statement and value proposition(s)</p>
+  <label for="mo1">Score: </label>
+  <select name="Market Opportunity 1" id="mo1" onchange="moWeightUpdate()">
+  </select>
+  <br>
+  <textarea id="mo1Comments" name="Market Opportunity 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Identified and rationalized customer segment(s)</p>
+  <label for="mo2">Score:</label>
+  <select name="Market Opportunity 2" id="mo2" onchange="moWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="mo2Comments" name="Market Opportunity 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="moWeighted" id="moWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Product/Solution [20%]</b></legend>
+  <p>Clearly articulates the story of how the product solves the problem</p>
+  <label for="ps1">Score: </label>
+  <select name="ProductSolution 1" id="ps1" onchange="psWeightUpdate()">
+  </select>
+  <br>
+  <textarea id="ps1Comments" name="ProductSolution 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Stage of product development</p>
+  <label for="ps2">Score:</label>
+  <select name="ProductSolution 2" id="ps2" onchange="psWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="ps2Comments" name="ProductSolution 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="psWeighted" id="psWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Competitive Advantage [10%]</b></legend>
+  <p>Unique & sustainable competitive advantage (e.g.,  patents/IP, technology, trade secret, innovative business model, unique capability, etc.)</p>
+  <label for="ca1">Score: </label>
+  <select name="Competitive Advantage 1" id="ca1" onchange="caWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="ca1Comments" name="Competitive Advantage 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="caWeighted" id="caWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Scalability [10%]</b></legend>
+  <p>Potential to take significant market share, disrupt, or create a brand new market and grow rapidly</p>
+  <label for="sa1">Score: </label>
+  <select name="Scalability 1" id="sa1" onchange="saWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="sa1Comments" name="Scalability 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="saWeighted" id="saWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Financial Understanding [10%]</b></legend>
+  <p>Knowledge of costs/expenses,  revenue model, pro forma</p>
+  <label for="fu1">Score: </label>
+  <select name="Financial Understanding 1" id="fu1" onchange="fuWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="fu1Comments" name="Financial Understanding 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Clear plan for use of funds</p>
+  <label for="fu2">Score:</label>
+  <select name="Financial Understanding 2" id="fu2" onchange="fuWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="fu2Comments" name="Financial Understanding 2Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="fuWeighted" id="fuWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Team [10%]</b></legend>
+  <p>Leadership and management team in place</p>
+  <label for="te1">Score: </label>
+  <select name="Team 1" id="te1" onchange="teWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="te1Comments" name="Team 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Clear understanding of activities, resources, and partners required to achieve success</p>
+  <label for="te2">Score:</label>
+  <select name="te2" id="te2" onchange="teWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="te2Comments" name="Team 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="teWeighted" id="teWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Investment Potential [10%]</b></legend>
+  <p>Validation of business model assumptions</p>
+  <label for="ip1">Score: </label>
+  <select name="Investment Potential 1" id="ip1" onchange="ipWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="ip1Comments" name="Investment Potential 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Clear pathway towards a return on investment (e.g. scaling revenue share, acqusition, IPO, etc.)</p>
+  <label for="ip2">Score:</label>
+  <select name="Investment Potential 2" id="ip2" onchange="ipWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="ip2Comments" name="Investment Potential 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="ipWeighted" id="ipWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Presentation Quality [10%]</b></legend>
+  <p>Logic & clarity</p>
+  <label for="pq1">Score: </label>
+  <select name="Presentation Quality 1" id="pq1" onchange="pqWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="pq1Comments" name="Presentation Quality 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Use of visuals</p>
+  <label for="pq2">Score:</label>
+  <select name="Presentation Quality 2" id="pq2" onchange="pqWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="pq2Comments" name="Presentation Quality 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Verbal delivery</p>
+  <label for="pq3">Score:</label>
+  <select name="Presentation Quality 3" id="pq3" onchange="pqWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="pq3Comments" name="Presentation Quality 3 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score:
+  <input name="pqWeighted" id="pqWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Total Score: </b></legend>
+  <input name="Total Score" id="Total Score" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br><br>
+  
+  <button type="submit">Submit</button>
+  <input type="reset" value="Reset">
+  
+  <br><br>  
+  
+</form>
+
+<script src="JudgeScoreJS.js"></script>
+
+
+<p>Click the "Submit" button and an email will be filled out ready to be sent to incubator@aquillius.com.</p>
+
+</body>
+</html>
