@@ -1,0 +1,450 @@
+<!doctype html>
+<html>
+<body>
+
+<h1>Aquillius Pitch Competition</h1>
+
+<form id="form" onsubmit="validateForm(event)">
+  <label for="Company Name"><b>Company Name: </label>
+  <input type="text" id="cname" name="Company Name"><br><br>
+  <label for="Judge Name">Judge Name: </label>
+  <input type="text" id="jname" name="Judge Name"><br><br>
+  Scoring Guide: 1-Poor 5-Average 10-Excellent</b>
+  <br><br>
+  
+  <fieldset>
+  <legend><b>Market Opportunity [20%]</b></legend>
+  <p>Clear problem statement and value proposition(s)</p>
+  <label for="mo1">Score: </label>
+  <select name="Market Opportunity 1" id="mo1" onchange="moWeightUpdate()">
+  </select>
+  <br>
+  <textarea id="mo1Comments" name="Market Opportunity 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Identified and rationalized customer segment(s)</p>
+  <label for="mo2">Score:</label>
+  <select name="Market Opportunity 2" id="mo2" onchange="moWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="mo2Comments" name="Market Opportunity 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="moWeighted" id="moWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Product/Solution [20%]</b></legend>
+  <p>Clearly articulates the story of how the product solves the problem</p>
+  <label for="ps1">Score: </label>
+  <select name="ProductSolution 1" id="ps1" onchange="psWeightUpdate()">
+  </select>
+  <br>
+  <textarea id="ps1Comments" name="ProductSolution 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Stage of product development</p>
+  <label for="ps2">Score:</label>
+  <select name="ProductSolution 2" id="ps2" onchange="psWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="ps2Comments" name="ProductSolution 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="psWeighted" id="psWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Competitive Advantage [10%]</b></legend>
+  <p>Unique & sustainable competitive advantage (e.g.,  patents/IP, technology, trade secret, innovative business model, unique capability, etc.)</p>
+  <label for="ca1">Score: </label>
+  <select name="Competitive Advantage 1" id="ca1" onchange="caWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="ca1Comments" name="Competitive Advantage 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="caWeighted" id="caWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Scalability [10%]</b></legend>
+  <p>Potential to take significant market share, disrupt, or create a brand new market and grow rapidly</p>
+  <label for="sa1">Score: </label>
+  <select name="Scalability 1" id="sa1" onchange="saWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="sa1Comments" name="Scalability 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="saWeighted" id="saWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Financial Understanding [10%]</b></legend>
+  <p>Knowledge of costs/expenses,  revenue model, pro forma</p>
+  <label for="fu1">Score: </label>
+  <select name="Financial Understanding 1" id="fu1" onchange="fuWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="fu1Comments" name="Financial Understanding 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Clear plan for use of funds</p>
+  <label for="fu2">Score:</label>
+  <select name="Financial Understanding 2" id="fu2" onchange="fuWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="fu2Comments" name="Financial Understanding 2Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="fuWeighted" id="fuWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Team [10%]</b></legend>
+  <p>Leadership and management team in place</p>
+  <label for="te1">Score: </label>
+  <select name="Team 1" id="te1" onchange="teWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="te1Comments" name="Team 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Clear understanding of activities, resources, and partners required to achieve success</p>
+  <label for="te2">Score:</label>
+  <select name="te2" id="te2" onchange="teWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="te2Comments" name="Team 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="teWeighted" id="teWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Investment Potential [10%]</b></legend>
+  <p>Validation of business model assumptions</p>
+  <label for="ip1">Score: </label>
+  <select name="Investment Potential 1" id="ip1" onchange="ipWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="ip1Comments" name="Investment Potential 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Clear pathway towards a return on investment (e.g. scaling revenue share, acqusition, IPO, etc.)</p>
+  <label for="ip2">Score:</label>
+  <select name="Investment Potential 2" id="ip2" onchange="ipWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="ip2Comments" name="Investment Potential 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score: 
+  <input name="ipWeighted" id="ipWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Presentation Quality [10%]</b></legend>
+  <p>Logic & clarity</p>
+  <label for="pq1">Score: </label>
+  <select name="Presentation Quality 1" id="pq1" onchange="pqWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="pq1Comments" name="Presentation Quality 1 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Use of visuals</p>
+  <label for="pq2">Score:</label>
+  <select name="Presentation Quality 2" id="pq2" onchange="pqWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="pq2Comments" name="Presentation Quality 2 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  <p>Verbal delivery</p>
+  <label for="pq3">Score:</label>
+  <select name="Presentation Quality 3" id="pq3" onchange="pqWeightUpdate()">
+  </select>  
+  <br>
+  <textarea id="pq3Comments" name="Presentation Quality 3 Comments" rows="3" cols="50" placeholder="Comments"></textarea>
+  <br>
+  Weighted Score:
+  <input name="pqWeighted" id="pqWeighted" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br>
+  
+  <fieldset>
+  <legend><b>Total Score: </b></legend>
+  <input name="Total Score" id="Total Score" type="number" step="0.01" value=0 readonly="readonly">
+  </fieldset>
+  <br><br>
+  
+  <button type="submit">Submit</button>
+  <input type="reset" value="Reset">
+  
+  <br><br>  
+  
+</form>
+
+<script>
+//get the current elements inside the form 
+const formitems = document.getElementById("form").innerHTML;
+
+//generic template to make the proper score select of 1 to 10 into html element
+function scoreSelection(Id)
+{
+	// Get the dropdown element
+    var dropdown = document.getElementById(Id);
+
+    // Generate options from 1 to 10
+    for (var i = 0; i <= 10; i++) {
+      // Create an option element
+      var option = document.createElement('option');
+      option.text = i; // Set the text content of the option
+      option.value = i; // Set the value of the option
+
+      // Add the option to the dropdown
+      dropdown.add(option);
+    }
+}
+
+function onSelect() {
+  alert("You selected a number!");
+}
+/*
+Each function below here really repeats the same thing of grabbing the right values from the right
+dropdown tables, so the script has potential to be generalized further.
+*/
+function moWeightUpdate() {
+  // Get the dropdown element(s)
+  var dropdown1 = document.getElementById('mo1');
+  var dropdown2 = document.getElementById('mo2');
+  // Calculated the weighted value from the dropdowns
+  var weightedValue = parseFloat((Number(dropdown1.value) + Number(dropdown2.value))*0.2/2*10).toFixed(2);
+  // Get the paragraph element to display the selected value
+  var display = document.getElementById('moWeighted');
+  // Update the input box with the selected value
+  display.value = weightedValue;
+  totalScoreUpdate();
+}
+function psWeightUpdate() {
+  var dropdown1 = document.getElementById('ps1');
+  var dropdown2 = document.getElementById('ps2');
+  var weightedValue = parseFloat((Number(dropdown1.value) + Number(dropdown2.value))*0.2/2*10).toFixed(2);
+  var display = document.getElementById('psWeighted');
+  display.value = weightedValue;
+  totalScoreUpdate();
+}
+function caWeightUpdate() {
+  var dropdown1 = document.getElementById('ca1');
+  var weightedValue = parseFloat(Number(dropdown1.value)*0.1/1*10).toFixed(2);
+  var display = document.getElementById('caWeighted');
+  display.value = weightedValue;
+  totalScoreUpdate();
+}
+function saWeightUpdate() {
+  var dropdown1 = document.getElementById('sa1');
+  var weightedValue = parseFloat(Number(dropdown1.value)*0.1/1*10).toFixed(2);
+  var display = document.getElementById('saWeighted');
+  display.value = weightedValue;
+  totalScoreUpdate();
+}
+function fuWeightUpdate() {
+  var dropdown1 = document.getElementById('fu1');
+  var dropdown2 = document.getElementById('fu2');
+  var weightedValue = parseFloat((Number(dropdown1.value) + Number(dropdown2.value))*0.1/2*10).toFixed(2);
+  var display = document.getElementById('fuWeighted');
+  display.value = weightedValue;
+  totalScoreUpdate();
+}
+function teWeightUpdate() {
+  var dropdown1 = document.getElementById('te1');
+  var dropdown2 = document.getElementById('te2');
+  var weightedValue = parseFloat((Number(dropdown1.value) + Number(dropdown2.value))*0.1/2*10).toFixed(2);
+  var display = document.getElementById('teWeighted');
+  display.value = weightedValue;
+  totalScoreUpdate();
+}
+function ipWeightUpdate() {
+  var dropdown1 = document.getElementById('ip1');
+  var dropdown2 = document.getElementById('ip2');
+  var weightedValue = parseFloat((Number(dropdown1.value) + Number(dropdown2.value))*0.1/2*10).toFixed(2);
+  var display = document.getElementById('ipWeighted');
+  display.value = weightedValue;
+  totalScoreUpdate();
+}
+function pqWeightUpdate() {
+  var dropdown1 = document.getElementById('pq1');
+  var dropdown2 = document.getElementById('pq2');
+  var dropdown3 = document.getElementById('pq3');
+  var weightedValue = parseFloat((Number(dropdown1.value) + Number(dropdown2.value) + Number(dropdown3.value))*0.1/3*10).toFixed(2);
+  var display = document.getElementById('pqWeighted');
+  display.value = weightedValue;
+  totalScoreUpdate();
+}
+//total score update
+function totalScoreUpdate() {
+  var summation = 0;
+  var moWeightedVal = Number(document.getElementById('moWeighted').value);
+  var psWeightedVal = Number(document.getElementById('psWeighted').value);
+  var caWeightedVal = Number(document.getElementById('caWeighted').value);
+  var saWeightedVal = Number(document.getElementById('saWeighted').value);
+  var fuWeightedVal = Number(document.getElementById('fuWeighted').value);
+  var teWeightedVal = Number(document.getElementById('teWeighted').value);
+  var ipWeightedVal = Number(document.getElementById('ipWeighted').value);
+  var pqWeightedVal = Number(document.getElementById('pqWeighted').value);
+  summation = (moWeightedVal + psWeightedVal + caWeightedVal + saWeightedVal + fuWeightedVal + teWeightedVal + ipWeightedVal + pqWeightedVal).toFixed(2);
+  var display = document.getElementById('Total Score');
+  display.value = summation;
+}
+//Update all the weighted values on start
+moWeightUpdate()
+psWeightUpdate()
+caWeightUpdate()
+saWeightUpdate()
+fuWeightUpdate()
+teWeightUpdate()
+ipWeightUpdate()
+pqWeightUpdate()
+//Fill all the score dropdown tables
+scoreSelection("mo1");
+scoreSelection("mo2");
+
+scoreSelection("ps1");
+scoreSelection("ps2");
+
+scoreSelection("ca1");
+
+scoreSelection("sa1");
+
+scoreSelection("fu1");
+scoreSelection("fu2");
+
+scoreSelection("te1");
+scoreSelection("te2");
+
+scoreSelection("ip1");
+scoreSelection("ip2");
+
+scoreSelection("pq1");
+scoreSelection("pq2");
+scoreSelection("pq3");
+
+//validateForm checks if all the dropdown tables are scored (do not have 0s)
+function validateForm(event) {
+  event.preventDefault();
+  
+    var cname = document.getElementById('cname').value;
+    var jname = document.getElementById('jname').value;
+    
+    var mo1 = Number(document.getElementById('mo1').value);
+    var mo2 = Number(document.getElementById('mo2').value);
+    var ps1 = Number(document.getElementById('ps1').value);
+    var ps2 = Number(document.getElementById('ps2').value);
+    var ca1 = Number(document.getElementById('ca1').value);
+    var sa1 = Number(document.getElementById('sa1').value);
+    var fu1 = Number(document.getElementById('fu1').value);
+    var fu2 = Number(document.getElementById('fu2').value);
+    var te1 = Number(document.getElementById('te1').value);
+    var te2 = Number(document.getElementById('te2').value);
+    var ip1 = Number(document.getElementById('ip1').value);
+    var ip2 = Number(document.getElementById('ip2').value);
+    var pq1 = Number(document.getElementById('pq1').value);
+    var pq2 = Number(document.getElementById('pq2').value);
+    var pq3 = Number(document.getElementById('pq3').value);
+    
+    if (cname === '') {
+    	alert('Please fill out the company name.');
+    }
+    if (jname === '') {
+    	alert('Please fill out your judge name.');
+    }
+
+    if (mo1 === 0 || mo2 === 0 || ps1 === 0 || ps2 === 0 || ca1 === 0 || sa1 === 0 || fu1 === 0 || fu2 === 0 || te1 === 0 || te2 === 0 || ip1 === 0 || ip2 === 0 || pq1 === 0 || pq2 === 0 || pq3 === 0) {
+        alert('Please select a value other than 0 for all scores.');
+    return;
+    }
+    
+  var moWeightedVal = Number(document.getElementById('moWeighted').value);
+  var psWeightedVal = Number(document.getElementById('psWeighted').value);
+  var caWeightedVal = Number(document.getElementById('caWeighted').value);
+  var saWeightedVal = Number(document.getElementById('saWeighted').value);
+  var fuWeightedVal = Number(document.getElementById('fuWeighted').value);
+  var teWeightedVal = Number(document.getElementById('teWeighted').value);
+  var ipWeightedVal = Number(document.getElementById('ipWeighted').value);
+  var pqWeightedVal = Number(document.getElementById('pqWeighted').value);
+  var totalScore = Number(document.getElementById('Total Score').value);
+  
+  var mo1c = document.getElementById('mo1Comments').value;
+  var mo2c = document.getElementById('mo2Comments').value;
+  var ps1c = document.getElementById('ps1Comments').value;
+  var ps2c = document.getElementById('ps2Comments').value;
+  var ca1c = document.getElementById('ca1Comments').value;
+  var sa1c = document.getElementById('sa1Comments').value;
+  var fu1c = document.getElementById('fu1Comments').value;
+  var fu2c = document.getElementById('fu2Comments').value;
+  var te1c = document.getElementById('te1Comments').value;
+  var te2c = document.getElementById('te2Comments').value;
+  var ip1c = document.getElementById('ip1Comments').value;
+  var ip2c = document.getElementById('ip2Comments').value;
+  var pq1c = document.getElementById('pq1Comments').value;
+  var pq2c = document.getElementById('pq2Comments').value;
+  var pq3c = document.getElementById('pq3Comments').value;
+  
+  var cname = document.getElementById('cname').value;
+  var jname = document.getElementById('jname').value;
+  var subject = 'Company Name: ' + cname + ' Judge Name: ' + jname;
+  var mailtoLink = 'mailto:incubator@aquillius.com';
+  mailtoLink += '?subject=' + encodeURIComponent(subject);
+  mailtoLink += '&body=' + encodeURIComponent('Company Name: ' + cname + '\n');
+  mailtoLink += encodeURIComponent('Market Opportunity 1: ' + mo1 + '\n');
+  mailtoLink += encodeURIComponent('Market Opportunity Comments 1: ' + mo1c + '\n');
+  mailtoLink += encodeURIComponent('Market Opportunity 2: ' + mo2 + '\n');
+  mailtoLink += encodeURIComponent('Market Opportunity Comments 1: ' + mo2c + '\n');
+  mailtoLink += encodeURIComponent('Market Opportunity Weighted: ' + moWeightedVal + '\n');
+  mailtoLink += encodeURIComponent('Product/Solution 1: ' + ps1 + '\n');
+  mailtoLink += encodeURIComponent('Product/Solution Comments 1: ' + ps1c + '\n');
+  mailtoLink += encodeURIComponent('Product/Solution 2: ' + ps2 + '\n');
+  mailtoLink += encodeURIComponent('Product/Solution Comments 2: ' + ps2c + '\n');
+  mailtoLink += encodeURIComponent('Product/Solution Weighted: ' + psWeightedVal + '\n');
+  mailtoLink += encodeURIComponent('Competitive Advantage 1: ' + ca1 + '\n');
+  mailtoLink += encodeURIComponent('Competitive Advantage Comments 1: ' + ca1c + '\n');
+  mailtoLink += encodeURIComponent('Competitive Advantage Weighted: ' + caWeightedVal + '\n');
+  mailtoLink += encodeURIComponent('Scalability 1: ' + sa1 + '\n');
+  mailtoLink += encodeURIComponent('Scalability 1: ' + sa1 + '\n');
+  mailtoLink += encodeURIComponent('Scalability Weighted: ' + saWeightedVal + '\n');
+  mailtoLink += encodeURIComponent('Financial Understanding 1: ' + fu1 + '\n');
+  mailtoLink += encodeURIComponent('Financial Understanding Comments 1: ' + fu1c + '\n');
+  mailtoLink += encodeURIComponent('Financial Understanding 2: ' + fu2 + '\n');
+  mailtoLink += encodeURIComponent('Financial Understanding Comments 2: ' + fu2c + '\n');
+  mailtoLink += encodeURIComponent('Financial Understanding Weighted: ' + fuWeightedVal + '\n');
+  mailtoLink += encodeURIComponent('Team 1: ' + te1 + '\n');
+  mailtoLink += encodeURIComponent('Team Comments 1: ' + te1c + '\n');
+  mailtoLink += encodeURIComponent('Team 2: ' + te2 + '\n');
+  mailtoLink += encodeURIComponent('Team Comments 2: ' + te2c + '\n');
+  mailtoLink += encodeURIComponent('Team Weighted: ' + teWeightedVal + '\n');
+  mailtoLink += encodeURIComponent('Investment Potential 1: ' + ip1 + '\n');
+  mailtoLink += encodeURIComponent('Investment Potential Comments 1: ' + ip1c + '\n');
+  mailtoLink += encodeURIComponent('Investment Potential 2: ' + ip2 + '\n');
+  mailtoLink += encodeURIComponent('Investment Potential Comments 2: ' + ip2c + '\n');
+  mailtoLink += encodeURIComponent('Investment Potential Weighted: ' + ipWeightedVal + '\n');
+  mailtoLink += encodeURIComponent('Presentation Quality 1: ' + pq1 + '\n');
+  mailtoLink += encodeURIComponent('Presentation Quality Comments 1: ' + pq1c + '\n');
+  mailtoLink += encodeURIComponent('Presentation Quality 2: ' + pq2 + '\n');
+  mailtoLink += encodeURIComponent('Presentation Quality Comments 2: ' + pq2c + '\n');
+  mailtoLink += encodeURIComponent('Presentation Quality 3: ' + pq3 + '\n');
+  mailtoLink += encodeURIComponent('Presentation Quality Comments 3: ' + pq3c + '\n');
+  mailtoLink += encodeURIComponent('Presentation Quality Weighted: ' + pqWeightedVal + '\n');
+  mailtoLink += encodeURIComponent('Total Score: ' + totalScore + '\n');
+  
+
+  window.location.href = mailtoLink;
+}
+
+</script>
+
+
+<p>Click the "Submit" button and an email will be filled out ready to be sent to incubator@aquillius.com.</p>
+
+</body>
+</html>
